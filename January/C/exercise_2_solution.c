@@ -1,4 +1,4 @@
-#include <iostream>
+#include <stdio.h>
 
 /* 
 RectangularArea
@@ -21,19 +21,18 @@ m^2 = f^2 × 0.09290304
 int main()
 {
     int length, width;
-    std::cout << "What is the length of the room in feet? ";
-    std::cin >> length;
+    printf("What is the length of the room? ");
+    scanf("%d", &length);
 
-    std::cout << "What is the width of the room in feet? ";
-    std::cin >> width;
+    printf("What is the width of the room? ");
+    scanf("%d", &width);
 
-    std::cout << "You entered dimensions of " << length << " feet by " << width << " feet";
+    printf("You entered dimensions of %d feet by %d feet. \n", length, width);
 
     int area = length * width;
-    // here, we store the result of multiplying by the constant in a double
-    // this prevents the program from rounding the result to a whole number
     double areaInMeters = area * 0.09290304;
-    std::cout << "The area is\n";
-    std::cout << area << " square feet\n";
-    std::cout << areaInMeters << " square meters\n";
+
+    puts("The area is");
+    printf("%d square feet\n", area);
+    printf("%lf square meters\n", areaInMeters);
 }

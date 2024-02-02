@@ -35,10 +35,16 @@ int main()
     std::cout << "You have " << yearsUntilRetirement << " years until you can retire.\n";
     auto now = std::chrono::system_clock::now();
 
-    // this only works in c++20 and up
-    auto today = std::chrono::time_point_cast<std::chrono::days>(now);
-    auto currentYear = (int)std::chrono::year_month_day(today).year();
+    // this only works in C++20 and up
+    // auto today = std::chrono::time_point_cast<std::chrono::days>(now);
+    // auto currentYear = (int)std::chrono::year_month_day(today).year(); 
+
+    // this works in all versions of C++
+    // it is also done similarly in C
+    std::time_t t = std::time(nullptr); // get the current time (just a number)
+    std::tm* time = std::localtime(&t); // convert the current time to readable local time (a struct with many parts storing the exact time)
+    // access the year from previously mentioned struct (we add 1900 because .tm_year stores the years since 1900)
+    int currentYear = time->tm_year + 1900; 
     
     std::cout << "It's " << currentYear << ", so you can retire in " << currentYear + yearsUntilRetirement;
-    
 }
