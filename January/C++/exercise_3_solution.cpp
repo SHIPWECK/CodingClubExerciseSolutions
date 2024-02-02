@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <chrono>
 
 /*
 RetirementCalculator
@@ -23,5 +24,19 @@ It's 2015, so you can retire in 2055
 
 int main()
 {
+    int age, retirementAge;
+    std::cout << "What is your current age? ";
+    std::cin >> age;
+    std::cout << "At what age would you like to retire? ";
+    std::cin >> retirementAge;
+
+    int yearsUntilRetirement = retirementAge - age;
+    
+    std::cout << "You have " << yearsUntilRetirement << " years until you can retire.\n";
+    auto now = std::chrono::system_clock::now();
+    auto today = std::chrono::time_point_cast<std::chrono::days>(now); // this only works in c++20 and up
+    auto currentYear = (int)std::chrono::year_month_day(today).year();
+    
+    std::cout << "It's " << currentYear << ", so you can retire in " << currentYear + yearsUntilRetirement;
     
 }
