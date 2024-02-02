@@ -34,7 +34,9 @@ int main()
     
     std::cout << "You have " << yearsUntilRetirement << " years until you can retire.\n";
     auto now = std::chrono::system_clock::now();
-    auto today = std::chrono::time_point_cast<std::chrono::days>(now); // this only works in c++20 and up
+
+    // this only works in c++20 and up
+    auto today = std::chrono::time_point_cast<std::chrono::days>(now);
     auto currentYear = (int)std::chrono::year_month_day(today).year();
     
     std::cout << "It's " << currentYear << ", so you can retire in " << currentYear + yearsUntilRetirement;
